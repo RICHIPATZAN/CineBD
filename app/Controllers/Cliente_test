@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Controllers;
+use App\Models\CiudadanosModel;
+
+class cliente extends BaseController
+{
+    
+    public function clientes()
+    
+    {
+        $db=\Config\Database::connect();      #conexion a la base de datos
+
+        $query = $db->query("SELECT * FROM clientes");
+
+       $data = ['clientes' => $query->getResult() ];
+
+        return view('clientes/cliente_vista', $data);
+    }
+}
